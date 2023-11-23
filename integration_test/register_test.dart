@@ -27,9 +27,9 @@ Future main() async {
 
       // Fill in the registration form
       await widgetTester.enterText(
-          find.byType(TextFormField).at(0), 'Alam'); // Name
+          find.byType(TextFormField).at(0), 'fatika12'); // Name
       await widgetTester.enterText(
-          find.byType(TextFormField).at(1), 'alam1@alam.com'); // Email
+          find.byType(TextFormField).at(1), 'fatika1@fatika1.com'); // Email
       await widgetTester
           .tap(find.byType(DropdownButtonFormField<String>)); // Gender
       await widgetTester.pumpAndSettle();
@@ -51,13 +51,20 @@ Future main() async {
       // Verify alert dialog
       expect(find.byType(AlertDialog), findsOneWidget);
       expect(find.text('Registration Successful'), findsOneWidget);
+      await widgetTester.pump();
 
       // Tap OK on the alert dialog
       await widgetTester.tap(find.text('OK'));
       await widgetTester.pumpAndSettle();
 
+      await widgetTester.pump();
+
       // Verify navigation to LoginView
+      // Verify navigation to LoginView
+      expect(find.byType(app2.RegisterView), findsOneWidget);
+      await widgetTester.pump();
       expect(find.byType(app1.LoginPage), findsOneWidget);
+      await widgetTester.pump();
     });
   });
 }
