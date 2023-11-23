@@ -35,6 +35,12 @@ class _DashboardViewState extends State<DashboardView> {
   int? globalRank;
 
   @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -273,12 +279,6 @@ class _DashboardViewState extends State<DashboardView> {
     globalRank = await UserDataController().getGlobalRank(widget.userId);
 
     setState(() {});
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    fetchData();
   }
 
   void logout(BuildContext context) {
